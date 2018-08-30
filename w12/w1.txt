@@ -1,0 +1,115 @@
+-----| testing_page5 |-----------------------
+# whitespace formatting
+# pass
+
+-----| testing_page6 |-----------------------
+# re module
+# pass
+
+-----| testing_page7 |-----------------------
+# Arithmetic
+# pass
+
+-----| testing_page8 |-----------------------
+# Functions
+# pass
+
+-----| testing_page9 |-----------------------
+# Strings
+# pass
+
+-----| testing_page10 |-----------------------
+# Exceptions
+# pass
+
+-----| testing_page11 |-----------------------
+# Lists
+# pass
+
+-----| testing_page12 |-----------------------
+# unpack Lists
+# pass
+
+-----| testing_page13 |-----------------------
+# tuples
+# pass
+
+-----| testing_page14 |-----------------------
+# dictionaries
+# pass
+
+-----| testing_page15 |-----------------------
+# defaultdict
+# pass
+
+-----| testing_page16 |-----------------------
+# counter
+# pass
+
+-----| testing_page17 |-----------------------
+# sets
+# pass
+
+-----| testing_page18 |-----------------------
+# control flow
+# pass
+
+-----| testing_page19 |-----------------------
+# truthiness
+# pass
+
+-----| testing_page20 |-----------------------
+# all fucntion
+# pass
+
+-----| testing_page22 |-----------------------
+# sorting
+# pass
+
+-----| testing_page23 |-----------------------
+# list comprehensions
+# pass
+
+-----| testing_page24 |-----------------------
+# generators and iterators. In python3, dict.items now does the thing dict.iteritems did in python 2.x 
+# pass
+
+-----| testing_page25 |-----------------------
+# randomness
+# pass
+
+-----| testing_page26 |-----------------------
+# regular expressions
+# pass
+
+-----| testing_page27 |-----------------------
+# oo programming
+# pass
+
+-----| testing_page28 |-----------------------
+# functional tools
+# pass
+
+-----| testing_page29 |-----------------------
+# reduce
+# pass
+
+-----| testing_page30 |-----------------------
+# enumerate
+# pass
+
+-----| testing_page31 |-----------------------
+# zip and argument unpacking
+# pass
+
+-----| testing_page32 |-----------------------
+# args and kwargs
+# pass
+
+-----| testing_page32 |-----------------------
+# higher-order functions
+# pass
+
+# pass= 28 fail= 0 %pass = 100%
+
+Process finished with exit code 0
