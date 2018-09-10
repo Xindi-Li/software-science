@@ -1,6 +1,4 @@
 import math
-from test import O
-
 
 class Sym:
     def __init__(self, l, f=lambda x: x):
@@ -40,8 +38,3 @@ class Sym:
         return self.ent
 
 
-@O.k
-def test():
-    s = Sym(['y', 'y', 'y', 'y', 'y', 'y', 'y', 'y', 'y', 'n', 'n', 'n', 'n', 'n'])
-    assert abs(s.symEnt() - 0.9403) < 0.01
-    print(s.symEnt())

@@ -2,8 +2,6 @@ from vars import Vars
 from random import random
 from random import seed
 import math
-from test import O
-
 
 class Sample:
 
@@ -41,16 +39,4 @@ class Sample:
         return out
 
 
-@O.k
-def test():
-    seed(1)
-    s = []
-    for i in range(5, 11):
-        s.append(Sample(2 ** i))
-    for i in range(1, 10001):
-        y = random()
-        for t in s:
-            t.sampleInc(y)
-    for t in s:
-        print(t.max, t.nth(0.5))
-        assert 0.3 < t.nth(0.5) < 0.7
+
