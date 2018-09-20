@@ -57,7 +57,7 @@ def testNum():
 @O.k
 def testSym():
     s = Sym(['y', 'y', 'y', 'y', 'y', 'y', 'y', 'y', 'y', 'n', 'n', 'n', 'n', 'n'])
-    assert abs(s.symEnt() - 0.9403) < 0.01
+    assert abs(s.symEnt() - 0.9403)/s.symEnt() < 0.01
     print(s.symEnt())
 
 
