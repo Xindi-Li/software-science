@@ -3,6 +3,7 @@ from random import random
 from random import seed
 import math
 
+
 class Sample:
 
     def __init__(self, max=Vars.max):
@@ -37,6 +38,3 @@ class Sample:
         for n in ns:
             out.append(self.nth(n))
         return out
-
-
-
