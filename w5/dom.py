@@ -1,5 +1,6 @@
 import data
 import math
+from vars import Vars
 from random import random
 from test import O
 
@@ -20,7 +21,7 @@ def dom(row1, row2):
 
 
 def doms():
-    n = 100
+    n = Vars.dom['samples']
     da.name.append(">dom")
     for r1 in range(len(da.rows)):
         row1 = da.rows[r1]

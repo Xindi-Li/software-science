@@ -1,0 +1,56 @@
+-----| test1 |-----------------------
+%outlook	$temp	<humid	wind	!play	>dom
+over		64		65		TRUE		yes		0.97
+over		64		65		TRUE		yes		0.92
+over		72		90		TRUE		yes		0.14
+over		72		90		TRUE		yes		0.21
+over		81		75		FALSE		yes		0.58
+over		81		75		FALSE		yes		0.64
+over		83		86		FALSE		yes		0.44
+over		83		86		FALSE		yes		0.35
+sunny		69		70		FALSE		yes		0.73
+sunny		69		70		FALSE		yes		0.64
+rainy		65		70		TRUE		no		0.69
+rainy		65		70		TRUE		no		0.69
+sunny		75		70		TRUE		yes		0.72
+sunny		75		70		TRUE		yes		0.74
+rainy		75		80		FALSE		yes		0.44
+rainy		75		80		FALSE		yes		0.53
+rainy		68		80		FALSE		yes		0.57
+rainy		68		80		FALSE		yes		0.51
+sunny		85		85		FALSE		no		0.42
+sunny		85		85		FALSE		no		0.48
+sunny		80		90		TRUE		no		0.2
+sunny		80		90		TRUE		no		0.24
+rainy		71		91		TRUE		no		0.16
+rainy		71		91		TRUE		no		0.13
+sunny		72		95		FALSE		no		0.05
+sunny		72		95		FALSE		no		0.06
+rainy		70		96		FALSE		yes		0
+rainy		70		96		FALSE		yes		0
+# pass
+
+-----| test2 |-----------------------
+%cylinders		$displacement		$horsepower		<weight		>acceltn		$model		origin		>mpg		>dom
+       8             455            225           4951            11             73              1             10              0
+       8             440            215           4312            8.5            70              1             10              0
+       8             390            190           3850            8.5            70              1             20              0
+       8             400            230           4278            9.5            73              1             20              0
+       8             383            180           4955           11.5            71              1             10            0.01
+       8             440            215           4735            11             73              1             10            0.01
+       8             454            220           4354             9             70              1             10            0.01
+       8             455            225           4425            10             70              1             10            0.01
+       8             340            160           3609             8             70              1             10            0.01
+       8             429            198           4341            10             70              1             20            0.01
+      ...            ...            ...            ...            ...            ...            ...            ...            ...
+       4             85             52            2035           22.2            76              1             30            0.97
+       4             91             70            1955           20.5            71              1             30            0.98
+       4             141            71            3190           24.8            79              2             30            0.98
+       4             71             65            1836            21             74              3             30            0.98
+       4             97             54            2254           23.5            72              2             20            0.99
+       4             97             46            1835           20.5            70              2             30            0.99
+       4             90             48            1985           21.5            78              2             40            0.99
+       4             98             60            2164           22.1            76              1             20             1.0
+       4             90             48            2335           23.7            80              2             40             1.0
+       4             97             52            2130           24.6            82              2             40             1.0
+# pass

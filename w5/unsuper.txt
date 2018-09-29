@@ -1,0 +1,41 @@
+-----| test |-----------------------
+|.. ..64..85
+
+|.. |.. ..64..75
+
+|.. |.. |.. ..64..69 (..69)
+|.. |.. |.. ..70..75
+
+|.. |.. |.. |.. ..70..72 (70..72)
+|.. |.. |.. |.. ..72..75 (72..75)
+|.. |.. ..80..85 (80..)
+%outlook	temp	<humid	wind	!play
+over		..69		65		TRUE		yes
+over		..69		65		TRUE		yes
+rainy		..69		70		TRUE		no
+rainy		..69		70		TRUE		no
+rainy		..69		80		FALSE		yes
+rainy		..69		80		FALSE		yes
+sunny		..69		70		FALSE		yes
+sunny		..69		70		FALSE		yes
+rainy		70..72		96		FALSE		yes
+rainy		70..72		96		FALSE		yes
+rainy		70..72		91		TRUE		no
+rainy		70..72		91		TRUE		no
+over		70..72		90		TRUE		yes
+over		70..72		90		TRUE		yes
+sunny		72..75		95		FALSE		no
+sunny		72..75		95		FALSE		no
+sunny		72..75		70		TRUE		yes
+sunny		72..75		70		TRUE		yes
+rainy		72..75		80		FALSE		yes
+rainy		72..75		80		FALSE		yes
+sunny		80..		90		TRUE		no
+sunny		80..		90		TRUE		no
+over		80..		75		FALSE		yes
+over		80..		75		FALSE		yes
+over		80..		86		FALSE		yes
+over		80..		86		FALSE		yes
+sunny		80..		85		FALSE		no
+sunny		80..		85		FALSE		no
+# pass

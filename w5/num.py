@@ -1,6 +1,7 @@
 from vars import Vars
 from sample import Sample
 
+
 class Num:
     def __init__(self, l, f=lambda x: x):
         self.n = 0
@@ -46,9 +47,7 @@ class Num:
     def numNorm(self, x):
         return 0.5 if x == "?" else (x - self.lo) / (self.hi - self.lo + 10 ** -32)
 
-    def numXpect(self, i, j):
+    @staticmethod
+    def numXpect(i, j):
         n = i.n + j.n + 0.001
         return i.n / n * i.sd + j.n / n * j.sd
-
-
-
