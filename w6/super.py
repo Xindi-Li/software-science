@@ -2,14 +2,16 @@ from vars import Vars
 from num import Num
 from test import O
 import re
-import data
+import math
+import dom
 
 
-class Unsuper:
+class Super:
 
     def __init__(self, data):
         self.rows = data.rows
-        self.enough = len(self.rows) ** Vars.unsuper['enough']
+        self.enough = len(data.rows) ** Vars.unsuper['enough']
+        self.goal = len(data.rows[1]) - 1
         for c in data.indeps:
             if data.nums.get(c):
                 self.ksort(c)
@@ -35,36 +37,47 @@ class Unsuper:
 
     def argmin(self, c, lo, hi):
         cut = None
-        if hi - lo > self.enough:
-            l, r = Num([]), Num([])
-            for i in range(lo, hi + 1):
-                r.numInc(float(self.rows[i][c]))
-            best = r.sd
+        xl, xr = Num([]), Num([])
+        yl, yr = Num([]), Num([])
+        for i in range(lo, hi + 1):
+            xr.numInc(float(self.rows[i][c]))
+            yr.numInc(float(self.rows[i][self.goal]))
+        bestx = xr.sd
+        besty = yr.sd
+        mu = yr.mu
+        if hi - lo > self.enough * 2:
             for i in range(lo, hi + 1):
                 x = float(self.rows[i][c])
-                l.numInc(x)
-                r.numDec(x)
-                if l.n >= self.enough and r.n >= self.enough:
-                    tmp = Num.numXpect(l, r) * Vars.unsuper['margin']
-                    if tmp < best:
-                        cut, best = i, tmp
-        return cut
+                y = float(self.rows[i][self.goal])
+                xl.numInc(x)
+                xr.numDec(x)
+                yl.numInc(y)
+                yr.numDec(y)
+                if xl.n >= self.enough and xr.n >= self.enough:
+                    tmpx = Num.numXpect(xl, xr) * Vars.unsuper['margin']
+                    tmpy = Num.numXpect(yl, yr) * Vars.unsuper['margin']
+                    if type(tmpx) == "complex":
+                        continue
+                    if tmpx < bestx and tmpy < besty:
+                        cut, bestx, besty = i, tmpx, tmpy
+
+        return cut, mu
 
     def cuts(self, c, lo, hi, pre):
         txt = f'{pre}..{str(self.rows[lo][c])}..{str(self.rows[hi][c])}'
-        cut = self.argmin(c, lo, hi)
+        cut, mu = self.argmin(c, lo, hi)
         if cut:
-            print(f'{txt}')
+            print(txt)
             self.cuts(c, lo, cut, f'{pre}|.. ')
             self.cuts(c, cut + 1, hi, f'{pre}|.. ')
         else:
             b = self.band(c, lo, hi)
-            print(f'{txt} ({b})')
+            print(f'{txt} = {math.floor(100*mu)}')
             for i in range(lo, hi + 1):
                 self.rows[i][c] = b
 
     def ksort(self, k):
-        self.rows.sort(key=lambda a: float(a[k]))
+        self.rows.sort(key=lambda a: math.inf if a[k] == '?' else float(a[k]))
 
     def stop(self, c):
         for i in range(len(self.rows) - 1, -1, -1):
@@ -75,4 +88,4 @@ class Unsuper:
 
 @O.k
 def test():
-    Unsuper(data.rows('weatherLong.csv'))
+    Super(dom.doms("auto.csv"))

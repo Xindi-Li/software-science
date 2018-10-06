@@ -1,6 +1,5 @@
 from vars import Vars
 from sample import Sample
-from math import sqrt
 
 
 class Num:
@@ -29,7 +28,7 @@ class Num:
         if x < self.hi:
             self.lo = x
         if self.n >= 2:
-            self.sd = sqrt(self.m2 / (self.n - 1 + 10 ** -32))
+            self.sd = (self.m2 / (self.n - 1 + 10 ** -32)) ** 0.5
         return x
 
     def numDec(self, x):
@@ -42,7 +41,7 @@ class Num:
         self.mu = self.mu - d / self.n
         self.m2 = abs(self.m2 - d * (x - self.mu))
         if self.n >= 2:
-            self.sd = sqrt(self.m2 / (self.n - 1 + 10 ** -32))
+            self.sd = (self.m2 / (self.n - 1 + 10 ** -32)) ** 0.5
         return x
 
     def numNorm(self, x):
