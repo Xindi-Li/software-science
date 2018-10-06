@@ -9,23 +9,30 @@ import dom
 class Super:
 
     def __init__(self, data):
+        self.name = data.name.copy()
+        self.sd_split = {}
         self.rows = data.rows
         self.enough = len(data.rows) ** Vars.unsuper['enough']
         self.goal = len(data.rows[1]) - 1
+        for k, v in enumerate(data.name):
+            if re.search(r'^\$', v):
+                data.name[k] = re.sub(r'^\$', '', v)
+
         for c in data.indeps:
             if data.nums.get(c):
                 self.ksort(c)
                 self.most = self.stop(c)
+                print(f'\n-- {self.name[c]} ----------')
                 self.cuts(c, 0, self.most, "|.. ")
-        for k, v in enumerate(data.name):
-            if re.search(r'^\$', v):
-                data.name[k] = re.sub(r'^\$', '', v)
+
         print('\t'.join(data.name))
         for row in data.rows:
             content = ""
             for cell in row:
                 content += f'{cell}\t\t'
             print(content)
+        print('\n')
+        self.splitter()
 
     def band(self, c, lo, hi):
         if lo == 0:
@@ -45,6 +52,7 @@ class Super:
         bestx = xr.sd
         besty = yr.sd
         mu = yr.mu
+        sd = yr.sd
         if hi - lo > self.enough * 2:
             for i in range(lo, hi + 1):
                 x = float(self.rows[i][c])
@@ -61,17 +69,20 @@ class Super:
                     if tmpx < bestx and tmpy < besty:
                         cut, bestx, besty = i, tmpx, tmpy
 
-        return cut, mu
+        return cut, mu, sd
 
     def cuts(self, c, lo, hi, pre):
         txt = f'{pre}..{str(self.rows[lo][c])}..{str(self.rows[hi][c])}'
-        cut, mu = self.argmin(c, lo, hi)
+        cut, mu, sd = self.argmin(c, lo, hi)
         if cut:
             print(txt)
             self.cuts(c, lo, cut, f'{pre}|.. ')
             self.cuts(c, cut + 1, hi, f'{pre}|.. ')
         else:
             b = self.band(c, lo, hi)
+            if self.sd_split.get(self.name[c]) is None:
+                self.sd_split[self.name[c]] = {}
+            self.sd_split[self.name[c]][math.floor(100 * mu)] = sd
             print(f'{txt} = {math.floor(100*mu)}')
             for i in range(lo, hi + 1):
                 self.rows[i][c] = b
@@ -85,7 +96,26 @@ class Super:
                 return i
         return 0
 
+    def splitter(self):
+        min_sd = math.inf
+        for name in self.sd_split.keys():
+            vs = self.sd_split[name]
+            n = sum(vs.keys())
+            e_sd = 0
+            for k, v in vs.items():
+                e_sd += k / n * v
+            print(f'expected sd when split on {name} = {e_sd}')
+            if e_sd < min_sd:
+                min_sd = e_sd
+                split = name
+        print(f'Splitter is {split}')
+
 
 @O.k
-def test():
+def testWeather():
+    Super(dom.doms("weatherLong.csv"))
+
+
+@O.k
+def testAuto():
     Super(dom.doms("auto.csv"))
